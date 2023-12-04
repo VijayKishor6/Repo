@@ -1,0 +1,120 @@
+﻿@model CRUD.Repository.Models.Register
+<head>
+    <!-- Include the Iconify library -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Your other head elements... -->
+</head>
+<style>
+    body {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .bg-color {
+        background-color: #aacde1 !important;
+    }
+
+    .font-size-span {
+        font-size: 12px;
+    }
+
+    .card-body-content {
+        width: 400px !important;
+    }
+
+    .form-control::placeholder {
+        opacity: 0.5;
+        font-weight: normal;
+        font-size: 15px;
+    }
+</style>
+<body>
+    <div class="d-flex position-fixed overflow-auto h-100 w-100 bg-color ">
+        <div class="flex-grow-1 text-white p-md-5 d-flex align-items-center overflow-y-hidden">
+            <div class="align-self-center w-100">
+                <div class="d-table m-auto login-bx">
+                    <div class="bg-white py-3  px-5 text-dark card-body-content">
+                        <img src="https://static.wixstatic.com/media/fb684b_368e9e101ca740ab96a30b3db32fadaa~mv2.png/v1/fill/w_640,h_264,al_c,lg_1,q_85,enc_auto/fb684b_368e9e101ca740ab96a30b3db32fadaa~mv2.png"
+                             class="m-auto d-table mb-3" width="200" height="80" alt="">
+                        <div class="text-center">
+                            <h2 class="fw-semibold mb-1">New User</h2>
+                            <p class="text-muted mb-0">Welcome back! Please enter your details</p>
+                        </div>
+                        <form class="my-3" method="post" action="Register">
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label fw-semibold">Name</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control " placeholder="Enter your Name"
+                                           asp-for="Name">
+                                </div>
+                                <span asp-validation-for="Name" class="text-danger font-size-span"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="PhoneNumber" class="form-label fw-semibold">
+                                    Phonenumber
+                                </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control " placeholder="Enter your Phonenumber"
+                                           asp-for="PhoneNumber">
+                                </div>
+                                <span asp-validation-for="PhoneNumber" class="text-danger font-size-span"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label fw-semibold">
+                                    Email
+                                </label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control fw-normal"
+                                           placeholder="Enter your email" asp-for="Email">
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger font-size-span"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label fw-semibold">Password</label>
+
+
+                                <div class="input-group">
+                                    <input type="password" class="form-control" asp-for="Password" id="passwordInput"
+                                           placeholder="Enter your Password" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <span type="button" class="input-group-text" id="togglePasswordBtn">
+                                        <iconify-icon icon="iconoir:eye" width="20"></iconify-icon>
+                                    </span>
+                                </div>
+
+
+                                <span asp-validation-for="Password" class="text-danger font-size-span"></span>
+                            </div>
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg rounded btn-shadow w-100 text-white fw-normal mb-3 opacity-75">
+                                Sign Up
+                            </button>
+                            <div class="d-flex flex-row justify-content-end">
+                                <label class="text-center">Already Have an Account</label>
+                                <a class="text-primary opacity-75 mx-2" asp-area="" asp-controller="Register" asp-action="Login">Login</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    document.getElementById('togglePasswordBtn').addEventListener('click', function () {
+        var passwordInput = document.getElementById('passwordInput');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
+
