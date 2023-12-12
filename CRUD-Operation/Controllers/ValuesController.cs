@@ -1,8 +1,6 @@
-﻿using CRUD.Repository;
-using CRUD.Repository.Models;
-using Microsoft.AspNetCore.Http;
+﻿using CRUD.Data.MySQL.Data;
+using CRUD.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

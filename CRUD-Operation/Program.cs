@@ -1,7 +1,10 @@
-using CRUD.Repository;
-using CRUD.Repository.Models;
+using AspNetCoreHero.ToastNotification.Abstractions;
+using CRUD.Data.MySQL.Data;
+using CRUD.Domain.Models;
 using CRUD.Services.Implementation;
 using CRUD.Services.Interfaces;
+using CRUD.Services.Validator;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,16 +16,20 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ProductContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connection"), b =>
-        b.MigrationsAssembly("CRUD-Operation")));
+        b.MigrationsAssembly("CRUD.Data.MySQL")));
 
 builder.Services.AddControllersWithViews()
         .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<RegisterValidator>());
+builder.Services.AddTransient<IValidator<Login>, LoginValidator >();
 
+// Configure the default Identity for IdentityUser
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ProductContext>()
     .AddDefaultTokenProviders();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
+
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
@@ -35,6 +42,8 @@ if (!app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

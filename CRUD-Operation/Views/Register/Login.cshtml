@@ -1,4 +1,4 @@
-﻿@model CRUD.Repository.Models.Login
+﻿@model CRUD.Domain.Models.Login
 
 
 <!DOCTYPE html>
@@ -253,10 +253,10 @@ a {
                             <input type="checkbox" id="check" />
                             <label for="check">Remember me</label>
                         </span>
-                        <a href="#" class="forgot_pw">Forgot password?</a>
+                        <a asp-controller="Register" asp-action="ForgotPassword" class="forgot_pw">Forgot password?</a>
                     </div>
 
-                    <button class="button" type="submit">Login Now</button>
+                    <button class="button" type="submit" name="submit">Login Now</button>
 
                     <div class="login_signup">Don't have an account? <a asp-controller="Register" asp-action="Register" >Signup</a></div>
                 </form>

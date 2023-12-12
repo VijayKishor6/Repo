@@ -1,5 +1,4 @@
-using CRUD.Repository.Models;
-using CRUD.Services.Interfaces;
+
 using CRUD_Operation.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;

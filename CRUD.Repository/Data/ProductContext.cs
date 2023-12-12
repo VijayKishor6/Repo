@@ -1,12 +1,7 @@
-﻿using CRUD.Repository.Models;
+﻿using CRUD.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CRUD.Repository
+namespace CRUD.Data.MySQL.Data
 {
     public class ProductContext : DbContext
     {
@@ -14,7 +9,7 @@ namespace CRUD.Repository
         {
         }
         public DbSet<Product> Products { get; set; }
-       
+
         public DbSet<Register> Register { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

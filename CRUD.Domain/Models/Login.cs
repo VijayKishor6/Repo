@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUD.Repository.Models
+namespace CRUD.Domain.Models
 {
     public class Login
     {

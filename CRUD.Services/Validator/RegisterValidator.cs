@@ -1,30 +1,15 @@
-﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore;
+﻿using CRUD.Data.MySQL.Data;
+using CRUD.Domain.Models;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CRUD.Repository.Models
+namespace CRUD.Services.Validator
 {
-    public class Register
-    {
-        [Key]
-        public Guid UserID { get; set; }
-        [Required]
-        public string  Name { get; set; }
-        [Required]
-        public string PhoneNumber { get; set; }
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
-
-    }
-
     public class RegisterValidator : AbstractValidator<Register>
     {
         private readonly ProductContext context;
@@ -57,8 +42,8 @@ namespace CRUD.Repository.Models
         }
         private bool BeValidName(string name)
         {
-           
-            return Regex.IsMatch(name, "^[a-zA-Z]+$");
+
+            return Regex.IsMatch(name, "^[a-zA-Z ]+$");
         }
     }
 }

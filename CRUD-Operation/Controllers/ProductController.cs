@@ -1,6 +1,7 @@
-﻿using CRUD.Repository.Models;
+﻿
 using CRUD.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using CRUD.Domain.Models;
 
 namespace CRUD_Operation.Controllers
 {

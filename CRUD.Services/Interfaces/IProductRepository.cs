@@ -1,4 +1,4 @@
-﻿using CRUD.Repository.Models;
+﻿using CRUD.Domain.Models;
 
 namespace CRUD.Services.Interfaces
 {
@@ -11,5 +11,7 @@ namespace CRUD.Services.Interfaces
         Task Delete(int id);
         Task RegisterAdd(Register model);
         bool UserValid( Login model);
+        bool EmailValid(string email);
+        void UpdatePassword(string email, string password);
     }
 }

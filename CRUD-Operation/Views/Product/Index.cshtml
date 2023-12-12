@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRUD.Repository.Models.Product>
+﻿@model IEnumerable<CRUD.Domain.Models.Product>
 @{
     ViewData["Title"] = "PRODUCT LIST";
 }
@@ -8,7 +8,7 @@
     <form>
         <div class="d-flex flex-columnrow justify-content-end">
             <button asp-action="CreateOrEdit" asp-controller="Product" class="btn btn-primary mb-3 mx-4">Create Product</button>
-            <button asp-action="Login" asp-controller="Register" class="btn btn-primary mb-3">Home</button>
+            <button asp-action="Login" asp-controller="Register" class="btn btn-primary mb-3">Logout</button>
         </div>
         <table class="table table-responsive table-bordered table-hover">
             <thead>
