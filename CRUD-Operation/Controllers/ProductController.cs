@@ -17,13 +17,13 @@ namespace CRUD_Operation.Controllers
            
         }
 
-        public async Task<IActionResult> Index()
+      /*  public async Task<IActionResult> Index()
         {
             var product = await _productRepo.GetAll();
             return View(product);
-        }
+        }*/
 
-        [HttpGet]
+  /*      [HttpGet]
         public async  Task<IActionResult> CreateOrEdit(int id = 0)
         {
             if(id == 0)
@@ -42,8 +42,8 @@ namespace CRUD_Operation.Controllers
             }
             return View();
         }
-
-        [HttpPost]
+*/
+ /*       [HttpPost]
         public async Task<IActionResult> CreateOrEdit(Product model)
         {
             try
@@ -77,8 +77,8 @@ namespace CRUD_Operation.Controllers
             }
         }
 
-     
-        public async Task<IActionResult> Delete(int id)
+     */
+  /*      public async Task<IActionResult> Delete(int id)
         {
             try
             {
@@ -113,6 +113,6 @@ namespace CRUD_Operation.Controllers
                 return View();
             }
         }
-
+*/
     }
 }

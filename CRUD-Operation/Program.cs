@@ -3,6 +3,7 @@ using CRUD.Data.MySQL.Data;
 using CRUD.Domain.Models;
 using CRUD.Services.Implementation;
 using CRUD.Services.Interfaces;
+using CRUD.Services.Services;
 using CRUD.Services.Validator;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -26,10 +27,23 @@ builder.Services.AddTransient<IValidator<Login>, LoginValidator >();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ProductContext>()
     .AddDefaultTokenProviders();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null; 
+        options.JsonSerializerOptions.DictionaryKeyPolicy = null; 
+    });
 
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+
+builder.Services.AddScoped<ILeadsRepository, LeadsRepository>();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddScoped<IOpportunities, OpportunitiesRepository>();
 
 var app = builder.Build();
 
@@ -42,7 +56,7 @@ if (!app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+builder.Logging.AddConsole();
 
 
 app.UseHttpsRedirection();
@@ -55,5 +69,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Register}/{action=Login}/{id?}");
+/*
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=fieldGroove}/{action=Index}/{id?}");*/
 
 app.Run();

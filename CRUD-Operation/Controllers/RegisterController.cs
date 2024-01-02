@@ -38,11 +38,20 @@ namespace CRUD_Operation.Controllers
                 }
                 return View(model);
             }
-            
+            model.Createdby = model.Name; 
+            model.Updatedby = model.Name;
+
+           
+            model.IsActive = !string.IsNullOrEmpty(model.Name) &&
+                            !string.IsNullOrEmpty(model.PhoneNumber) &&
+                            !string.IsNullOrEmpty(model.Email) &&
+                            !string.IsNullOrEmpty(model.Password);
+            model.IsDelete = !(model.IsActive);
+            model.IsAdmin = (model.IsActive);
+
             if (ModelState.IsValid)
             {
                 await _productRepo.RegisterAdd(model);
-                
                 return RedirectToAction("AlertMessage");
             }
             return View(model);
@@ -57,7 +66,8 @@ namespace CRUD_Operation.Controllers
              
                 if (_productRepo.UserValid(model))
                 {
-                    return RedirectToAction("Index", "Product");
+                    // return RedirectToAction("Index", "Product");
+                    return RedirectToAction("Index", "fieldGroove");
                 }
             }
             else

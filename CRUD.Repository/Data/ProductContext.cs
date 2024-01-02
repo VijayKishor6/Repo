@@ -8,15 +8,10 @@ namespace CRUD.Data.MySQL.Data
         public ProductContext(DbContextOptions options) : base(options)
         {
         }
-        public DbSet<Product> Products { get; set; }
-
         public DbSet<Register> Register { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Leads> Leads { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Price)
-                .HasColumnType("decimal(18, 2)");
-        }
+
     }
 }
