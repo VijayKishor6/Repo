@@ -44,6 +44,8 @@ builder.Services.AddScoped<ILeadsRepository, LeadsRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddScoped<IOpportunities, OpportunitiesRepository>();
+builder.Services.AddScoped<IEstimatesRepository, EstimatesRepository>();
+
 
 var app = builder.Build();
 
